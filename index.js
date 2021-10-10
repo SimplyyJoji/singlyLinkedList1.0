@@ -104,10 +104,26 @@ class SinglyLinkedList{
       return this;
   
   }
+  //get function should accept a index
+  get(index) {
+    //Edge Case: if the index is less the 0 or if index is greater then or equal to the list length
+    if (index < 0 || index >= this.howLong) {
+      return "We can not do that"
+    }
+    let counter = 0;
+    let current = this.head;
+    
+    while(counter !== index) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+    //Loop through the list  and return the node that is in the index 
+  }
 }
 var list = new SinglyLinkedList()
 
 list.push("Hey");
 list.push("There");
 list.push("My");
-list.unshift("Pizza");
+list.get(0);
