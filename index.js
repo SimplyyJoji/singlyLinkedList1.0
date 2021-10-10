@@ -120,10 +120,24 @@ class SinglyLinkedList{
     return current;
     //Loop through the list  and return the node that is in the index 
   }
+  //Set should accept a value and a index
+  set(index,value){
+    //use the get function to find the specific node
+    var foundValue = this.get(index);
+
+    if (foundValue) {
+      foundValue.value = value
+      return true;
+    }
+    return false;
+    //if node not there return false
+    //if node is found change the node value to the function and return true
+    
+  }
 }
 var list = new SinglyLinkedList()
 
 list.push("Hey");
 list.push("There");
 list.push("My");
-list.get(0);
+list.set(1,"Cool");
