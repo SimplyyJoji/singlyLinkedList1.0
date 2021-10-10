@@ -53,8 +53,6 @@ class SinglyLinkedList{
     }
     this.tail = newTail;
     this.tail.next = null;
-    console.log(`The value of newTail is ${newTail.val}`)
-    console.log(`The value of Current is ${current.val}`)
     this.howLong--;
     if(this.howLong === 0) {
       this.head = null;
@@ -67,12 +65,29 @@ class SinglyLinkedList{
     //Decrement the length of the list by 1
     //Return thye value of the node removed
   }
+  shift(){
+    //if there are no nodes return undefined
+    if (this.howLong === 0) {
+      return "empty"
+    }
+    var deletedNode = this.head;
+    this.head = deletedNode.next
+    this.howLong--;
+    console.log(this.howLong)
+    if(this.howLong === 0) {
+      this.tail = null;
+    }
+    return deletedNode;
+    //store the current head in a variable
+    //set head to be the current heads next property
+    //decrement the length by 1
+    //return the value of node 
+  }
 }
 var list = new SinglyLinkedList()
 
 list.push("Hey");
 list.push("There");
 list.push("My");
-
-
-list.pop();
+list.shift()
+list.push("My");
