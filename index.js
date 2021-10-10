@@ -66,22 +66,43 @@ class SinglyLinkedList{
     //Return thye value of the node removed
   }
   shift(){
-    //if there are no nodes return undefined
+    //Edge Case: if there are no nodes return undefined
     if (this.howLong === 0) {
       return "empty"
     }
+    //store the current head in a variable
     var deletedNode = this.head;
-    this.head = deletedNode.next
+    //set head to be the current heads next property
+    this.head = deletedNode.next;
+     //decrement the length by 1
     this.howLong--;
     console.log(this.howLong)
     if(this.howLong === 0) {
       this.tail = null;
     }
+     //return the value of node
     return deletedNode;
-    //store the current head in a variable
-    //set head to be the current heads next property
-    //decrement the length by 1
-    //return the value of node 
+    
+  }
+  //unshift should accept val
+  unshift(val) {
+  //create a new Node uusing the value passed to function
+    var newNode = new Node(val);
+  //if there is not this.head set the head and tail to the new Node
+    if(!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+      //otherwise set the newly created nodes next property to be the current head
+    } else {
+       //set the head on the list to be that newly created node
+      newNode.next = this.head;
+      this.head = newNode;
+    }    
+      //increment the length of the list by 1
+      this.howLong++
+      //return the linked list  
+      return this;
+  
   }
 }
 var list = new SinglyLinkedList()
@@ -89,5 +110,4 @@ var list = new SinglyLinkedList()
 list.push("Hey");
 list.push("There");
 list.push("My");
-list.shift()
-list.push("My");
+list.unshift("Pizza");
