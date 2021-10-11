@@ -134,10 +134,33 @@ class SinglyLinkedList{
     //if node is found change the node value to the function and return true
     
   }
+
+  insert(index, val){
+    //if index is less then 0 or greater then the length return false
+    if (index < 0 || index > this.length) return false;
+     //if the index is the same as the length , push a new node to the end of the list
+    if (index === this.length) return !!this.push(val);
+  //if the index is 0 unshift a new node to the start of the list
+    if (index === 0) return !!this.unshift(val);
+    //set the next property on that node to be the new node
+    var newNode = new Node(val);
+      //otherwise use the get method, access the node at the index
+    var prev = this.get(index - 1);
+    var temp = prev.next;
+    prev.next = newNode;
+    newNode.next = temp;
+    //increment the length
+    this.howLong++;
+        //return true
+    return true;
+  }
+  remove() {
+
+  }
 }
 var list = new SinglyLinkedList()
 
-list.push("Hey");
-list.push("There");
-list.push("My");
-list.set(1,"Cool");
+list.push(10);
+list.push(30);
+list.push(40);
+list.insert(2,"First");
