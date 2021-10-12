@@ -1,3 +1,5 @@
+const { ServerResponse } = require("http");
+
 class Node {
   constructor(val){
     this.val = val;
@@ -168,6 +170,36 @@ class SinglyLinkedList{
     return removed;
     //otherwise use the get method to access the node at the index 01
 
+  }
+  reverse(){
+    //swap the head and tail
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    var next;
+    var prev = null
+    for (var i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+    //create varable called next
+    //create variable called prev
+    //create a var called node and initialize it to the head property
+    //loop through the list
+    //set next to be the property on whatever node is
+    //Set the nect property on the node to be whatever prev is
+    //Set prev to be the value of
+  }
+  print() {
+    let arr = [];
+    let current = this.head;
+    while (current) {
+      arr.push(current.val)
+      current = current.next
+    }
+    console.log(arr)
   }
 }
 var list = new SinglyLinkedList()
